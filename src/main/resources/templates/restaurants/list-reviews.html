@@ -1,0 +1,77 @@
+<!DOCTYPE HTML>
+<html lang="en" 
+		xmlns:th="http://www.thymeleaf.org"
+		xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+     integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+	<link rel="stylesheet" th:href="@{/css/style.css}">
+	
+	<title>Restaurant Reviews</title>
+	<style>		
+		body, html {
+		  height: 100%;
+		}
+		p{
+			padding:5px;
+		}
+	</style>
+</head>
+
+<body>
+<br>
+<div class="container bg">
+
+	<div class="h3">
+		<form style="display:inline;" action="#" th:action="@{/logout}" 
+			   method="POST">
+			   <p class="h3" th:text="*{name}" style="display:inline">Restaurant Name</p>	
+			<input type="submit" value="Logout" class="btn btn-outline-primary mt-2 float-right" />		
+		</form>
+		<br>
+	</div>
+	<hr>
+	<h5>Reviews</h5>
+	<hr>
+		<div style="padding:20px;" th:each="tempReview : ${reviews}">			
+			<div class="h5 reviewBy"><p th:text="${tempReview.username}" /></div>
+			<div class="content border-box"><p th:text="${tempReview.feedback}" /></div>					
+		</div>
+		<br>
+		<!--<div sec:authorize="hasAnyRole('ROLE_INSPECTOR')"> -->
+		<div  class="my-review">
+		<form action="#" th:action="@{/restaurants/addReview}"
+				th:object="${review}" method="POST">
+			<input  type="hidden" th:field="*{id}">					
+			<input  type="hidden" th:field="*{username}">
+			<input  type="hidden" th:field="*{restaurant_id}">
+			<div>
+			<input type="text" th:field="*{feedback}"
+					class="form-control mb-4 col-4" placeholder="Add your review">
+			</div>				
+			<button  type="submit" class="btn btn-info col-2">Add Review</button>
+		</form>
+		
+		<br>
+		<a th:href="@{/restaurants/list}">Back to Restaurants List</a>
+		<br>
+		
+		</div>
+	
+	
+	<br>
+	
+</div>
+	
+</body>
+</html>
+
+
+

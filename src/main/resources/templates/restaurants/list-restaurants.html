@@ -1,0 +1,97 @@
+<!DOCTYPE HTML>
+<html lang="en" 
+		xmlns:th="http://www.thymeleaf.org"
+		xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+     integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+		
+	<link rel="stylesheet" th:href="@{/css/style.css}">
+	<title>Restaurant Directory</title>
+</head>
+
+<body>
+<br>
+<div class="container bg">
+
+	<div class="h3">
+		Welcome <span class="h3" sec:authentication="name"></span>
+		<form class="float-right" style="display:inline;" action="#" th:action="@{/logout}" 
+			   method="POST">	
+			<input type="submit" value="Logout" class="btn btn-outline-primary mt-2" />		
+		</form>
+		<br>
+	</div>
+	<hr>
+	<h3>Restaurant Directory</h3>
+	<hr>
+	
+	<form th:action="@{/restaurants/search}" class="form-inline">
+		<div style="width:100%;">
+			<!-- Add a button -->
+			<a sec:authorize="hasAnyRole('ROLE_INSPECTOR','ROLE_VIP')" th:href="@{/restaurants/showFormForAdd}"
+				class="btn btn-primary btn-sm mb-3">
+				Add Restaurant
+			</a>		
+			
+			<button class="btn btn-success mb-3 float-right" type="submit">Search</button>
+			<input style="margin:0;" class="form-control  ml-5 mr-sm-2 mb-3 float-right" type="search" 
+			name="nameOrCity" placeholder="Search by name or city" />
+		</div>
+    </form>	
+	
+	<div class="sort-button">
+	<a th:href="@{/restaurants/list(orderBy='rating')}">Sort by rating</a>
+	</div>
+	<div th:each="tempRestaurant : ${restaurants}">
+            <div class="restaurant border-box">
+            	<div class="action-icon" sec:authorize="hasAnyRole('ROLE_INSPECTOR')">
+                    <a th:href="@{/restaurants/showFormForUpdate(restaurantId=${tempRestaurant.id})}">
+                    <img  class="select-icon"  src="/icons/edit-big.png" /></a>
+                    <br>
+                    <a th:href="@{/restaurants/delete(restaurantId=${tempRestaurant.id})}"
+                     onclick="if(!(confirm('Are you sure you want to delete this Restaurant?'))) return false">
+                     <img class="select-icon" src="/icons/delete-big.png" /></a>
+                </div>
+                <div class="upper-left">
+                    <p th:text="${tempRestaurant.name}" class="name h3">Name</p>
+                    <p th:text="${tempRestaurant.city}" class="address">City</p>
+                </div>
+                <div class="upper-right">
+                    <p class="dull-font">Rating:</p>
+                    <p class="number h1" th:text="${tempRestaurant.rating}">0</p>
+                    <p class="dull-font">/10</p>
+                </div>
+                <br>
+                <p class="dull-font">visit site:</p>
+                <p class="website"><a href="#" class="btn" 
+                th:text="${tempRestaurant.website}" style="border:none;">website</a></p>
+                <br>
+                <div class="about-left">
+                    <p class="h4">About</p>
+                </div>
+                <div class="about-right">
+                    <p class="details"><span th:text="${tempRestaurant.details}">details</span></p>
+                </div>
+                <br>
+                <a class="review dull-font" th:href="@{/restaurants/reviews(id=${tempRestaurant.id})}">See Reviews</a>
+                <br>
+            </div>
+        </div>
+        
+	<br>
+	<br>
+	
+</div>
+	
+</body>
+</html>
+
+
+

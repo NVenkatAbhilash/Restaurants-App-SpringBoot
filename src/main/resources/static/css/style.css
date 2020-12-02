@@ -1,0 +1,139 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+
+body, html {
+  height: 100%;
+}
+		
+.bg {
+  background-image: url(@{static/img/bg_img.jpg});
+  height: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.action-icon{
+    display: none;
+    position: absolute;
+    top:20%;
+    right: -65px;
+}
+
+.select-icon{
+    margin: 4px;
+    padding: 8px;
+    border: 1px solid;
+    border-radius: 50%;
+    border-color: rgb(0,0,0,.2);
+}
+
+.restaurant:hover .action-icon{
+    display: block;
+}
+
+.select-icon:hover{
+    background-color: rgb(0,0,0,.1);
+    border: 1px solid;
+    border-color: white;
+}
+
+.sort-button{
+	height:30px;
+}
+
+.sort-button a{
+	float:right;
+	padding: 0 20px;
+}
+
+.upper-left{
+    display: inline-block;
+}
+
+.upper-right{
+    float: right;
+    display: inline-block;
+}
+
+.dull-font{
+    font-style: italic;
+    opacity: .7;
+    display: inline;
+}
+
+.number{
+    display: inline;
+    font-style: italic;
+    padding: 0 5px;
+}
+
+.restaurant{
+    margin:20px;
+    padding:15px 40px;
+    position: relative;
+}
+
+.border-box{
+	border:1px solid;
+    border-color: rgb(103, 107, 104,0.2);
+    border-radius: 15px;
+}
+
+.name{
+    margin: 0;
+}
+
+.address{
+    font-style: italic;
+    opacity: 0.7;
+}
+
+.website{
+    display: inline;
+}
+
+.website a{
+    font-size: 15px;
+    color: blue;
+    opacity: 0.7;
+    padding: 0px 0px 3px 0px;
+}
+
+.about-left{
+    display: inline-block;
+    height: 100%;
+    padding-right: 30px;
+    width:13%;
+}
+
+.about-left p{
+    vertical-align:top;
+}
+
+.about-right{
+    padding-top: 20px;
+    display: inline-block;
+    font-family:sans-serif;
+    width:80%;
+}
+.review{
+    padding-left: 140px;
+}	
+.reviewBy{
+	display:inline-block;
+	padding:5px;
+}
+.content{
+	display:inline-block;
+	width:500px;
+	height:80px;	
+}
+
+ .my-review{
+ 	padding-left:100px;
+ }
+
+

@@ -1,0 +1,80 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+     integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+	<title>Save Restaurant</title>
+	<style>
+		i{
+			color:red;
+		}		
+	</style>
+</head>
+
+<body>
+
+	<br>
+	
+	<div class="container">
+	
+		<h3>Restaurant Directory</h3>
+		<hr>
+		
+		<p class="h4 mb-4">Save Restaurant</p>
+	
+		<form action="#" th:action="@{/restaurants/save}"
+						 th:object="${restaurant}" method="POST">
+			<input  type="hidden" th:field="*{id}">
+				<div>
+				<input style="display:inline;" type="text" th:field="*{name}"
+						class="form-control mb-4 col-4" placeholder="Name">
+					<i style="display:inline;" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></i>
+				</div>
+				<div>
+				<input style="display:inline;" type="text" th:field="*{city}"
+						class="form-control mb-4 col-4" placeholder="Address">
+					<i style="display:inline;" th:if="${#fields.hasErrors('city')}" th:errors="*{city}"></i>
+				</div>
+				<div>		
+				<input style="display:inline;" type="text" th:field="*{website}"
+						class="form-control mb-4 col-4" placeholder="Website">
+						<i style="display:inline;" th:if="${#fields.hasErrors('website')}" th:errors="*{website}"></i>
+				</div>
+				<div>		
+				<input style="display:inline;" type="text" th:field="*{rating}"
+						class="form-control mb-4 col-4" placeholder="Rating">
+						<i style="display:inline;" th:if="${#fields.hasErrors('rating')}" th:errors="*{rating}"></i>
+				</div>
+				<div>
+				<input style="display:inline; " type="text" th:field="*{details}"
+						class="form-control mb-4 col-4" placeholder="Details">
+					<i style="display:inline;" th:if="${#fields.hasErrors('details')}" th:errors="*{details}"></i>
+				</div>
+			<button  type="submit" class="btn btn-info col-2">Save</button>
+			
+		</form>
+	
+		<hr>
+		<a th:href="@{/restaurants/list}">Back to Restaurants List</a>
+		
+	</div>
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
