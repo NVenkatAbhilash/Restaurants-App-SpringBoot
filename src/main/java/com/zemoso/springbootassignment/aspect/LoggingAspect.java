@@ -5,6 +5,7 @@ import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.springframework.context.annotation.Configuration;
 
+import java.util.Optional;
 import java.util.logging.Logger;
 
 @Aspect
@@ -27,7 +28,7 @@ public class LoggingAspect {
         catch (Exception e){
             myLogger.warning("\n!!!!!EXCEPTION!!!!!!\n" +
                     "method: "+method+"\nerror: "+e.getMessage());
-            result=null;
+            result= null;
         }
         myLogger.info("\n====>>>> Method returned: "+method);
         return result;

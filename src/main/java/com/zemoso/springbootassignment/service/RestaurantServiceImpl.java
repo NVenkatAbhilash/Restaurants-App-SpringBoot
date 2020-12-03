@@ -99,9 +99,7 @@ public class RestaurantServiceImpl implements RestaurantService {
         String name = theRestaurant.getName();
         return name;
     }
-
 }
-
 
 
 
