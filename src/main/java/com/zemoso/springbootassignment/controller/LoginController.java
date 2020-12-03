@@ -48,7 +48,9 @@ public class LoginController {
         if (theBindingResult.hasErrors()) {
             return "signUp";
         }
-
+        if(usersService.findByUsername(theUser.getUsername())!=null){
+            return "redirect:/showMySignUpPage?userexists";
+        }
         if (!theUser.getPassword().equals(theUser.getConfirmpassword())) {
             return "redirect:/showMySignUpPage?missmatch";
         }

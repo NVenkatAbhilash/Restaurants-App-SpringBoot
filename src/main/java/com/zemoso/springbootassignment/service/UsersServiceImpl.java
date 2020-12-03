@@ -16,6 +16,7 @@ public class UsersServiceImpl implements UsersService {
 	@Override
 	public void save(Users theUser) {
 	    String username = theUser.getUsername();
+
         Authorities authority = new Authorities(username,"ROLE_CUSTOMER");
 
         theUser.setEnabled((short) 1);
@@ -24,4 +25,9 @@ public class UsersServiceImpl implements UsersService {
 
 		usersRepository.save(theUser);
 	}
+
+	@Override
+    public Users findByUsername(String username){
+	    return usersRepository.findByUsername(username);
+    }
 }

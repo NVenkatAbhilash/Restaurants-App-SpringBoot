@@ -8,5 +8,5 @@ import com.zemoso.springbootassignment.entity.Restaurant;
 
 public interface RestaurantRepository extends JpaRepository<Restaurant, Integer> {
 
-    public List<Restaurant> findByNameContainsOrCityContainsAllIgnoreCase(String theName, String City);
+    public List<Restaurant> findByNameContainsOrCityContainsIgnoreCase(String theName, String City);
 }

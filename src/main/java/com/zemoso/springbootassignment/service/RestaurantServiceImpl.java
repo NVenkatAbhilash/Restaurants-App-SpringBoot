@@ -63,7 +63,7 @@ public class RestaurantServiceImpl implements RestaurantService {
         List<Restaurant> results;
 
         if (theName != null && (theName.trim().length() > 0)) {
-            results = restaurantRepository.findByNameContainsOrCityContainsAllIgnoreCase(theName, theName);
+            results = restaurantRepository.findByNameContainsOrCityContainsIgnoreCase(theName, theName);
         } else {
             results = findAll();
         }
