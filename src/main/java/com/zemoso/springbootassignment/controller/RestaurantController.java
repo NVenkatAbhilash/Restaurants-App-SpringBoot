@@ -122,15 +122,3 @@ public class RestaurantController {
 		return "redirect:/restaurants/reviews?id="+theReview.getRestaurant_id();
 	}
 }
-
-
-
-
-
-
-
-
-
-
-
-

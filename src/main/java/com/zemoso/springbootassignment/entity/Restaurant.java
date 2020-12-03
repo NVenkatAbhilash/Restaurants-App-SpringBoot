@@ -19,7 +19,6 @@ import javax.validation.constraints.Size;
 @Getter @Setter @NoArgsConstructor @ToString
 public class Restaurant {
 
-	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="id")
